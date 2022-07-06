@@ -31,4 +31,20 @@ function operate(operator, num1, num2){
     }
 }
 
+function displayNumber(num){
+    const display = document.querySelector("#display");
+    display.textContent += num;
+}
+
+function clearDisplay(){
+    const display = document.querySelector("#display");
+    display.textContent = '';
+}
+
+function getDisplayValue(){
+    return document.querySelector("#display").textContent;
+}
+
+
+
 
