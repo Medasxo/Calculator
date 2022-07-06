@@ -10,7 +10,12 @@ function multiply(a, b){
     return a * b;
 }
 function divide(a, b){
-    return a / b;
+    if(b === 0){
+        return "Cannot divide by zero";
+    }
+    else{
+        return a / b;
+    }
 }
 
 function operate(operator, num1, num2){
@@ -25,6 +30,9 @@ function operate(operator, num1, num2){
     }
     else if(operator === "/"){
         return divide(num1, num2);
+    }
+    else if(operator === ''){
+        return num1;
     }
     else{
         return "Error";
@@ -56,7 +64,6 @@ function displayOperator(operator){
     let lastChar = display.textContent[display.textContent.length-1];
     
     if( (lastChar !== operator) && (Number.isInteger(parseInt(lastChar)) === false)){
-        console.log(lastChar);
         let displayString = display.textContent;
         let str = displayString.slice(0, -1);
         display.textContent = str + operator;
@@ -65,6 +72,35 @@ function displayOperator(operator){
         
         display.textContent += operator;
     }
+}
+
+function equals(){
+    const display = document.querySelector("#display");
+    let displayText = display.textContent;
+    let displayTextLength = display.textContent.length;
+    let num1 = 0;
+    let num2 = 0;
+    let operator = '';
+    let operatorCount = 0;
+    for(let i = 0; i < displayTextLength; i++){
+        if( Number.isInteger(parseInt(displayText[i])) === true && (operator === '')){
+            num1 += displayText[i];
+        }
+        else if(Number.isInteger(parseInt(displayText[i])) === false && operatorCount == 0){
+            operator = displayText[i];
+            operatorCount++;
+        }
+        else if(Number.isInteger(parseInt(displayText[i])) === false && operatorCount >= 1){
+            num1 = operate(operator,parseInt(num1),parseInt(num2));
+            num2 = 0;
+            operator = displayText[i];
+        }
+        else if(Number.isInteger(parseInt(displayText[i])) === true && (operator !== ''))
+        {
+            num2 += displayText[i];
+        }
+    }
+    display.textContent = operate(operator,parseInt(num1),parseInt(num2));
 }
 
 
