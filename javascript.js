@@ -13,7 +13,22 @@ function divide(a, b){
     return a / b;
 }
 
-console.log(add(5,6));
-console.log(subtract(125, 5));
-console.log(multiply(15,5));
-console.log(divide(15,5));
+function operate(operator, num1, num2){
+    if(operator === "+"){
+        return add(num1, num2);
+    }
+    else if(operator === "-"){
+        return subtract(num1, num2);
+    }
+    else if(operator === "*"){
+        return multiply(num1, num2);
+    }
+    else if(operator === "/"){
+        return divide(num1, num2);
+    }
+    else{
+        return "Error";
+    }
+}
+
+
