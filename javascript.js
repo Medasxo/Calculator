@@ -33,18 +33,29 @@ function operate(operator, num1, num2){
 
 function displayNumber(num){
     const display = document.querySelector("#display");
-    display.textContent += num;
+    if(display.textContent.length === 1 && display.textContent === "0"){
+        display.textContent = num;
+    }
+    else{
+        display.textContent += num;
+    }
 }
 
 function clearDisplay(){
     const display = document.querySelector("#display");
-    display.textContent = '';
+    display.textContent = 0;
 }
 
 function getDisplayValue(){
     return document.querySelector("#display").textContent;
 }
 
+/** 
+function displayAdd(){
+    const display = document.querySelector("#display");
+    if(display.textContent);
+}
+*/
 
 
 
