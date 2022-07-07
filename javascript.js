@@ -136,6 +136,25 @@ function backspaceDisplay(){
     else{
         display.textContent = displayText.slice(0, -1);
     }
-
 }
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === "0") {displayNumber(0)}
+    else if (event.key === "1") {displayNumber(1)}
+    else if (event.key === "2") {displayNumber(2)}
+    else if (event.key === "3") {displayNumber(3)}
+    else if (event.key === "4") {displayNumber(4)}
+    else if (event.key === "5") {displayNumber(5)}
+    else if (event.key === "6") {displayNumber(6)}
+    else if(event.key === "7") {displayNumber(7)}
+    else if(event.key === "8") {displayNumber(8)}
+    else if(event.key === "9") {displayNumber(9)}
+    else if(event.key === "+") {displayOperator('+')}
+    else if(event.key === "-") {displayOperator('-')}
+    else if(event.key === "*") {displayOperator('*')}
+    else if(event.key === "/") {displayOperator('/')}
+    else if(event.key === "=" || event.key === "Enter") {equals()}
+    else if(event.key === "c" || event.key === "C") {clearDisplay()}
+    else if(event.key === "Backspace") {backspaceDisplay()}
+});
 
