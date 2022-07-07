@@ -156,6 +156,7 @@ document.addEventListener('keydown', (event) => {
     else if(event.key === "=" || event.key === "Enter") {equals()}
     else if(event.key === "c" || event.key === "C") {clearDisplay()}
     else if(event.key === "Backspace") {backspaceDisplay()}
+    else if(event.key === ".") {displayDot()}
     
 });
 
