@@ -11,7 +11,7 @@ function multiply(a, b){
 }
 function divide(a, b){
     if(b === 0){
-        return "Cannot divide by zero";
+        return "Cannot divide by 0";
     }
     else{
         return a / b;
@@ -123,9 +123,19 @@ function equals(){
     else{
         display.textContent = answer;
     }
-    
+
 }
 
+function backspaceDisplay(){
+    const display = document.querySelector("#display");
+    let displayText = display.textContent;
+    
+    if(displayText.length === 1 || displayText === "Cannot divide by 0"){
+        display.textContent = 0;
+    }
+    else{
+        display.textContent = displayText.slice(0, -1);
+    }
 
-
+}
 
