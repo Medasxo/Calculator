@@ -86,12 +86,18 @@ function equals(){
         if( Number.isInteger(parseInt(displayText[i])) === true && (operator === '')){
             num1 += displayText[i];
         }
+        else if((displayText[i] === ".") && (operator === '')){
+            num1 += displayText[i];
+        }
+        else if((displayText[i] === ".") && (operator !== '')){
+            num2 += displayText[i];
+        }
         else if(Number.isInteger(parseInt(displayText[i])) === false && operatorCount == 0){
             operator = displayText[i];
             operatorCount++;
         }
         else if(Number.isInteger(parseInt(displayText[i])) === false && operatorCount >= 1){
-            num1 = operate(operator,parseInt(num1),parseInt(num2));
+            num1 = operate(operator,parseFloat(num1),parseFloat(num2));
             num2 = 0;
             operator = displayText[i];
         }
@@ -100,8 +106,9 @@ function equals(){
             num2 += displayText[i];
         }
     }
-    display.textContent = operate(operator,parseInt(num1),parseInt(num2));
+    display.textContent = operate(operator,parseFloat(num1),parseFloat(num2));
 }
+console.log((parseFloat("5.01")));
 
 
 
