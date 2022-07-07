@@ -74,6 +74,14 @@ function displayOperator(operator){
     }
 }
 
+function decimalCount(num){
+    const numStr = String(num);
+    if(numStr.includes('.')){
+        return numStr.split('.')[1].length;
+    }
+    return 0;
+}
+
 function equals(){
     const display = document.querySelector("#display");
     let displayText = display.textContent;
@@ -82,6 +90,7 @@ function equals(){
     let num2 = 0;
     let operator = '';
     let operatorCount = 0;
+    let answer = 0;
     for(let i = 0; i < displayTextLength; i++){
         if( Number.isInteger(parseInt(displayText[i])) === true && (operator === '')){
             num1 += displayText[i];
@@ -106,9 +115,17 @@ function equals(){
             num2 += displayText[i];
         }
     }
-    display.textContent = operate(operator,parseFloat(num1),parseFloat(num2));
+
+    answer = operate(operator,parseFloat(num1),parseFloat(num2));
+    if(decimalCount(answer) >= 4){
+        display.textContent = answer.toFixed(3);
+    }
+    else{
+        display.textContent = answer;
+    }
+    
 }
-console.log((parseFloat("5.01")));
+
 
 
 
