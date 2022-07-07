@@ -156,5 +156,23 @@ document.addEventListener('keydown', (event) => {
     else if(event.key === "=" || event.key === "Enter") {equals()}
     else if(event.key === "c" || event.key === "C") {clearDisplay()}
     else if(event.key === "Backspace") {backspaceDisplay()}
+    
 });
+
+function displayDot(){
+    let dotCount = 0;
+    const display = document.querySelector("#display");
+    
+    for(let i = display.textContent.length-1; i>=0;i--){
+        if(display.textContent[i] === '.'){
+            dotCount = 1;
+        }
+        else if(Number.isInteger(parseInt(display.textContent[i])) === false){
+            break;
+        }
+    }
+    if (dotCount === 0){
+        display.textContent += ".";
+    }
+}
 
